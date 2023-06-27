@@ -5,6 +5,7 @@ const app = express();
 const PORT = 8000;
 const db = require("./config/db");
 const morgan = require("morgan");
+const User = require("./models/User");
 
 app.use(morgan("tiny"));
 app.use(express.json());
