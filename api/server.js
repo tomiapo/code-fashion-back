@@ -6,11 +6,12 @@ const PORT = 8000;
 const db = require("./config/db");
 const morgan = require("morgan");
 const User = require("./models/User");
+const routes = require("./routes");
 
 app.use(morgan("tiny"));
 app.use(express.json());
 app.use(cors());
-// app.use("/api", routes);
+app.use("/api", routes);
 app.get("/", (req, res) => {
   res.send("Hello World");
 });
