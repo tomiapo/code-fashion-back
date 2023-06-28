@@ -15,6 +15,4 @@ const showAllProducts = async (req, res) => {
   }
 };
 
-module.exports = {
-  showAllProducts,
-};
+module.exports = showAllProducts;
