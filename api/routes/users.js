@@ -5,3 +5,12 @@ usersRouter.post("/users/logout", (req, res) => {
   //la ruta debera ser modificada una vez se agregue el archivo index
   res.clearCookie("authToken").sendStatus(204); //asume que el nombre de la cookie es 'authToken', debe ser modificado en caso de que se le asigne otro nombre
 });
+
+//ruta de persistencia de la sesion
+
+usersRouter.get(
+  "/users/me",
+  /*middleware de validacion de usuario */ (req, res) => {
+    res.send(req.user);
+  }
+);
