@@ -32,7 +32,7 @@ User.init(
     },
     isSeller: {
       type: Sequelize.BOOLEAN,
-      allowNull: false,
+      defaultValue: false,
     },
     email: {
       type: Sequelize.STRING,
