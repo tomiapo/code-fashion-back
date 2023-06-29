@@ -9,7 +9,7 @@ router.get("/", showAllProducts);
 
 router.get("/products/:id", async (req, res) => {
   const productId = req.params.id;
-
+  //
   try {
     const product = await Product.findByPk(productId);
     if (!product) {
