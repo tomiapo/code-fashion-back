@@ -8,7 +8,7 @@ const orderHistory = require("./orderHistory");
 
 router.use("/user", user);
 router.use("/products", product);
-router.use("/order-history", orderHistory);
+router.use("/orderhistory", orderHistory);
 
 // Se importa todas en una y se la requiere en server.js
 

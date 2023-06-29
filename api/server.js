@@ -5,9 +5,10 @@ const app = express();
 const PORT = 8000;
 const db = require("./config/db");
 const morgan = require("morgan");
-const User = require("./models/User");
+
 const routes = require("./routes");
-const { OrderHistory, Product, User } = require("./models");
+const User = require("./models/User");
+const { OrderHistory, Product } = require("./models");
 const cookieParser = require("cookie-parser");
 
 app.use(morgan("tiny"));

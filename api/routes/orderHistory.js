@@ -21,3 +21,4 @@ router.post("/create", async (req, res) => {
     res.status(500).json({ error: "Error adding products to order history" });
   }
 });
+module.exports = router;
