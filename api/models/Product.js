@@ -39,7 +39,7 @@ Product.init(
       unique: true,
     },
   },
-  { sequelize: db, modelName: "product" }
+  { sequelize: db, modelName: "product", timestamps: true }
 );
 
 module.exports = Product;
