@@ -1,6 +1,7 @@
 const express = require("express");
 const User = require("../models/User");
 const { generateToken } = require("../config/token");
+const validateUser = require("../middlewares/validateUser");
 
 const router = express.Router();
 
@@ -46,12 +47,9 @@ router.post("/login", async (req, res) => {
 
 //ruta de persistencia de la sesion
 
-router.get(
-  "/me",
-  /*middleware de validacion de usuario */ (req, res) => {
-    res.send(req.user);
-  }
-);
+router.get("/me", validateUser, (req, res) => {
+  res.send(req.user);
+});
 
 router.post("/logout", (req, res) => {
   //la ruta debera ser modificada una vez se agregue el archivo index
