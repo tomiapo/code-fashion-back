@@ -7,19 +7,21 @@ const { Product } = require("../models");
 // Route to get-all-products using it's controller
 router.get("/", showAllProducts);
 
-router.get("/products/:id", async (req, res) => {
+router.get("/:id", (req, res) => {
   const productId = req.params.id;
+  console.log(productId);
   // se puede incluir todo esto dentro de productControllers.js
-  try {
-    const product = await Product.findByPk(productId);
-    if (!product) {
-      return res.status(404).json({ error: "Product not found" });
-    }
-    res.json(product);
-  } catch (error) {
-    console.log(error);
-    res.status(500).json({ error: "Server error" });
-  }
+  Product.findByPk(productId)
+    .then((product) => {
+      res.send(product);
+      if (!product) {
+        return res.status(402).json({ error: "Product not found" });
+      }
+    })
+    .catch((error) => {
+      console.log(error);
+      res.send(error);
+    });
 });
 router.post("/", (req, res) => {
   Product.create(req.body).then((products) => res.send(products));

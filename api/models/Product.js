@@ -36,7 +36,6 @@ Product.init(
     brand: {
       type: Sequelize.STRING,
       allowNull: false,
-      unique: true,
     },
   },
   { sequelize: db, modelName: "product", timestamps: true }
