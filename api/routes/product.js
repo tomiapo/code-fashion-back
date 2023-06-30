@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const showAllProducts = require("../controllers/productControllers");
+const { Product } = require("../models");
 // The `/api/products` endpoint
 
 // Route to get-all-products using it's controller
@@ -19,6 +20,9 @@ router.get("/products/:id", async (req, res) => {
     console.log(error);
     res.status(500).json({ error: "Server error" });
   }
+});
+router.post("/", (req, res) => {
+  Product.create(req.body).then((products) => res.send(products));
 });
 
 module.exports = router;

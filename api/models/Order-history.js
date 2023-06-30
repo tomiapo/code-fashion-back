@@ -9,15 +9,7 @@ OrderHistory.init(
       allowNull: false,
       primaryKey: true,
     },
-    userId: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      // id del usuario que realizo la orden
-    },
-    productId: {
-      type: DataTypes.ARRAY(DataTypes.INTEGER),
-      allowNull: false, // array con los ids de los productos comprados
-    },
+
     productQuantity: {
       type: DataTypes.INTEGER,
       allowNull: false, // cantidad de productos distintos adquiridos.
