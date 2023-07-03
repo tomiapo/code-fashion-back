@@ -2,15 +2,13 @@ const express = require("express");
 const router = express.Router();
 const showAllProducts = require("../controllers/productControllers");
 const { Product } = require("../models");
-// The `/api/products` endpoint
 
-// Route to get-all-products using it's controller
 router.get("/", showAllProducts);
 
 router.get("/:id", (req, res) => {
   const productId = req.params.id;
   console.log(productId);
-  // se puede incluir todo esto dentro de productControllers.js
+
   Product.findByPk(productId)
     .then((product) => {
       res.send(product);

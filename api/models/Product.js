@@ -1,7 +1,6 @@
 const Sequelize = require("sequelize");
 const db = require("../config/db");
 
-//Modelo Producto
 class Product extends Sequelize.Model {}
 Product.init(
   {
@@ -11,11 +10,11 @@ Product.init(
       autoIncrement: true,
     },
     name: {
-      type: Sequelize.STRING, //string field 255 character
+      type: Sequelize.STRING,
       allowNull: false,
     },
     description: {
-      type: Sequelize.TEXT, //text field 30,000 characters
+      type: Sequelize.TEXT,
       allowNull: false,
     },
     price: {
