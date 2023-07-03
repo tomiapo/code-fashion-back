@@ -12,11 +12,11 @@ OrderHistory.init(
 
     productQuantity: {
       type: DataTypes.INTEGER,
-      allowNull: false, // cantidad de productos distintos adquiridos.
+      allowNull: false,
     },
     totalAmount: {
       type: DataTypes.INTEGER,
-      allowNull: false, // monto total de la compra
+      allowNull: false,
     },
   },
   { sequelize: db, modelName: "Order-history" }
