@@ -27,8 +27,8 @@ router.post("/login", async (req, res) => {
       return res.sendStatus(401);
     } else {
       const payload = {
-        name: user.name,
-        lastname: user.lastname,
+        name: user.first_name,
+        lastname: user.last_name,
         email: user.email,
         id: user.id,
         address: user.address,
