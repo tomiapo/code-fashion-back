@@ -41,9 +41,23 @@ class SuperAdminController {
 
   static async revokeAdminPrivileges(req, res, next) {
     try {
-      const userId = req.params.userId;
+      const userId = req.params.userId; // Assuming the user's ID to have privileges revoked is passed as a parameter
 
-      const user = await SuperAdminService.revokeAdminPrivileges(userId);
+      // Find the super admin with isSuperAdmin = true
+      const superAdmin = await User.findOne({
+        where: { isSuperAdmin: true },
+      });
+
+      if (!superAdmin) {
+        throw new Error("SuperAdmin not found");
+      }
+
+      const superAdminId = superAdmin.id;
+
+      const user = await SuperAdminService.revokeAdminPrivileges(
+        superAdminId,
+        userId
+      );
       res.json(user);
     } catch (error) {
       next(error);
