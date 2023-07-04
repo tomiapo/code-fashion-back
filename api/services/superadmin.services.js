@@ -59,14 +59,22 @@ class SuperAdminService {
 
   static async revokeAdminPrivileges(superAdminId, userId) {
     try {
+      const superAdmin = await User.findOne({
+        where: { isSuperAdmin: true },
+      });
+
+      if (!superAdmin) {
+        throw new Error("SuperAdmin not found");
+      }
+
+      if (superAdmin.id !== superAdminId) {
+        throw new Error("Not authorized to perform this action");
+      }
+
       const user = await User.findByPk(userId);
 
       if (!user) {
         throw new Error("User not found");
-      }
-
-      if (!user.isSuperAdmin) {
-        throw new Error("Not authorized to perform this action");
       }
 
       if (user.isSuperAdmin) {
