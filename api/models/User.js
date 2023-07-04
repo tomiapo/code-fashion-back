@@ -35,6 +35,10 @@ User.init(
       type: Sequelize.BOOLEAN,
       defaultValue: false,
     },
+    isSuperAdmin: {
+      type: Sequelize.BOOLEAN,
+      defaultValue: false,
+    },
     email: {
       type: Sequelize.STRING,
       allowNull: false,
