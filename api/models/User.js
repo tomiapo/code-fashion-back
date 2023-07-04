@@ -35,7 +35,7 @@ User.init(
       type: Sequelize.BOOLEAN,
       defaultValue: false,
     },
-    is_superAdmin: {
+    is_super_admin: {
       type: Sequelize.BOOLEAN,
       defaultValue: false,
     },
