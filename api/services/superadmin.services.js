@@ -16,11 +16,11 @@ class SuperAdminService {
       return await User.findAll({
         attributes: [
           "id",
-          "firstname",
-          "lastname",
+          "first_name",
+          "last_name",
           "email",
-          "isSeller",
-          "isSuperAdmin",
+          "is_seller",
+          "is_super_admin",
         ],
       });
     } catch (error) {
@@ -31,7 +31,7 @@ class SuperAdminService {
   static async promoteToAdmin(superAdminId, userId) {
     try {
       const superAdmin = await User.findOne({
-        where: { id: superAdminId, isSuperAdmin: true },
+        where: { id: superAdminId, is_super_admin: true },
       });
 
       if (!superAdmin) {
@@ -44,11 +44,11 @@ class SuperAdminService {
         throw new Error("User not found");
       }
 
-      if (user.isSuperAdmin) {
+      if (user.is_super_admin) {
         throw new Error("Cannot promote a SuperAdmin to Admin");
       }
 
-      user.isSeller = true;
+      user.is_seller = true;
       await user.save();
 
       return user;
@@ -60,7 +60,7 @@ class SuperAdminService {
   static async revokeAdminPrivileges(superAdminId, userId) {
     try {
       const superAdmin = await User.findOne({
-        where: { isSuperAdmin: true },
+        where: { is_super_admin: true },
       });
 
       if (!superAdmin) {
@@ -77,11 +77,11 @@ class SuperAdminService {
         throw new Error("User not found");
       }
 
-      if (user.isSuperAdmin) {
+      if (user.is_super_admin) {
         throw new Error("Cannot revoke SuperAdmin privileges");
       }
 
-      user.isSeller = false;
+      user.is_seller = false;
       await user.save();
 
       return user;

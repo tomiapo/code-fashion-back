@@ -4,7 +4,7 @@ class AdminService {
   static async getAllUsers() {
     try {
       return await User.findAll({
-        attributes: ["id", "firstname", "lastname", "email"],
+        attributes: ["id", "first_name", "last_name", "email"],
       });
     } catch (error) {
       console.log(error);

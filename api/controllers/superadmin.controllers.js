@@ -23,7 +23,7 @@ class SuperAdminController {
 
       // Find the super admin with isSuperAdmin = true
       const superAdmin = await User.findOne({
-        where: { isSuperAdmin: true },
+        where: { is_super_admin: true },
       });
 
       if (!superAdmin) {

@@ -4,15 +4,15 @@ const OrderHistory = require("../models/Order-history");
 
 router.post("/create", async (req, res) => {
   try {
-    const { orderId, userId, productId, productQuantity, totalAmount } =
+    const { order_id, user_id, product_id, product_quantity, total_amount } =
       req.body;
 
     const order = await OrderHistory.create({
-      orderId,
-      userId,
-      productId,
-      productQuantity,
-      totalAmount,
+      order_id,
+      user_id,
+      product_id,
+      product_quantity,
+      total_amount,
     });
 
     res.status(201).json(order);

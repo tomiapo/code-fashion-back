@@ -15,11 +15,11 @@ class User extends Sequelize.Model {
 }
 User.init(
   {
-    firstname: {
+    first_name: {
       type: Sequelize.STRING,
       allowNull: false,
     },
-    lastname: {
+    last_name: {
       type: Sequelize.STRING,
       allowNull: false,
     },
@@ -31,11 +31,11 @@ User.init(
       type: Sequelize.TEXT,
       allowNull: false,
     },
-    isSeller: {
+    is_seller: {
       type: Sequelize.BOOLEAN,
       defaultValue: false,
     },
-    isSuperAdmin: {
+    is_super_admin: {
       type: Sequelize.BOOLEAN,
       defaultValue: false,
     },
