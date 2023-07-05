@@ -1,6 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const showAllProducts = require("../controllers/productControllers");
+const ProductController = require("../controllers/product.controllers");
+
 const { Product } = require("../models");
 
 router.get("/", showAllProducts);
@@ -19,8 +21,12 @@ router.get("/:id", (req, res) => {
       res.send(error);
     });
 });
-router.post("/", (req, res) => {
-  Product.create(req.body).then((products) => res.send(products));
-});
+// router.post("/", (req, res) => {
+//   Product.create(req.body).then((products) => res.send(products));
+// });
+
+router.post("/", ProductController.addProduct);
+router.delete("/:id", ProductController.deleteProduct);
+router.put("/:id", ProductController.editProduct);
 
 module.exports = router;

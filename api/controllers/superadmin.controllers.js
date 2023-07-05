@@ -19,9 +19,8 @@ class SuperAdminController {
   }
   static async promoteToAdmin(req, res, next) {
     try {
-      const userId = req.params.userId; // Assuming the user's ID to be promoted is passed as a parameter
+      const userId = req.params.userId;
 
-      // Find the super admin with isSuperAdmin = true
       const superAdmin = await User.findOne({
         where: { is_super_admin: true },
       });
@@ -41,9 +40,8 @@ class SuperAdminController {
 
   static async revokeAdminPrivileges(req, res, next) {
     try {
-      const userId = req.params.userId; // Assuming the user's ID to have privileges revoked is passed as a parameter
+      const userId = req.params.userId;
 
-      // Find the super admin with isSuperAdmin = true
       const superAdmin = await User.findOne({
         where: { isSuperAdmin: true },
       });
