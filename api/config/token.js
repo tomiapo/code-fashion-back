@@ -1,4 +1,3 @@
-// configuracion de JWT
 const jwt = require("jsonwebtoken");
 
 const SECRET = "secret";

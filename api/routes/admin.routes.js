@@ -1,6 +1,5 @@
 const express = require("express");
 const router = express.Router();
-const User = require("../models/User");
 const AdminController = require("../controllers/admin.controllers");
 const { validateToken } = require("../config/token");
 

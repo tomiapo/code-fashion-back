@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const OrderHistoryController = require("../controllers/orderHistory.controller");
+const OrderHistoryController = require("../controllers/orderHistory.controllers");
 
 router.post("/create", OrderHistoryController.createNewOrder);
 router.get("/", OrderHistoryController.getAllOrders);
