@@ -39,8 +39,10 @@ class UserController {
           email: user.email,
           id: user.id,
           address: user.address,
+          isSeller: user.isSeller,
         };
         const token = generateToken(payload);
+
         res.cookie("authToken", token);
         res.send({ user: payload, token: token });
       }
