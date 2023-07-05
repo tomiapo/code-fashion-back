@@ -1,8 +1,7 @@
 const User = require("./User");
 const Product = require("./Product");
-const OrderHistory = require("./Order-history");
+const OrderHistory = require("./OrderHistory");
 
-OrderHistory.belongsTo(User, { foreignKey: "userId" });
-OrderHistory.belongsTo(Product, { foreignKey: "productId" });
+OrderHistory.belongsTo(User, { foreignKey: "user_id" });
 
 module.exports = { OrderHistory, Product, User };

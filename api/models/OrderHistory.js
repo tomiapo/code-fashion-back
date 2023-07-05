@@ -4,22 +4,24 @@ class OrderHistory extends Model {}
 
 OrderHistory.init(
   {
-    orderId: {
+    order_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
+      autoIncrement: true,
     },
 
-    productQuantity: {
-      type: DataTypes.INTEGER,
+    order_details_by_product: {
+      type: DataTypes.ARRAY(DataTypes.STRING),
+
       allowNull: false,
     },
-    totalAmount: {
+    total_amount: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
   },
-  { sequelize: db, modelName: "Order-history" }
+  { sequelize: db, modelName: "OrderHistory" }
 );
 
 module.exports = OrderHistory;
