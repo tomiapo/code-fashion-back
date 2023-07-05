@@ -1,5 +1,6 @@
 const User = require("../models/User");
 const { generateToken } = require("../config/token");
+const AdminService = require("../services/admin.services");
 
 class UserController {
   static async getAll(req, res) {
