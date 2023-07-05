@@ -1,7 +1,6 @@
 const Sequelize = require("sequelize");
 const db = require("../config/db");
 const bcrypt = require("bcrypt");
-const validateUser = require("../middlewares/validateUser");
 
 class User extends Sequelize.Model {
   hash(password, salt) {
