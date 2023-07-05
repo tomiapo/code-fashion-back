@@ -1,8 +1,19 @@
 const express = require("express");
-const UserController = require("../controllers/user.controller");
+
+const User = require("../models/User");
+const { generateToken } = require("../config/token");
+const validateUser = require("../middlewares/validateUser");
+const UserController = require("../controllers/user.controllers");
+
+
+
+
 const router = express.Router();
+router.put("/:userId", UserController.editUser);
+
 
 router.post("/create-user", UserController.createUser);
+
 
 router.post("/login", UserController.loginUser);
 
