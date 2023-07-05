@@ -4,29 +4,15 @@ const showAllProducts = require("../controllers/productControllers");
 const ProductController = require("../controllers/product.controllers");
 
 const { Product } = require("../models");
+const ProductController = require("../controllers/productControllers");
+router.get("/", ProductController.showAllProducts);
 
-router.get("/", showAllProducts);
-
-router.get("/:id", (req, res) => {
-  const productId = req.params.id;
-
-  Product.findByPk(productId)
-    .then((product) => {
-      res.send(product);
-      if (!product) {
-        return res.status(402).json({ error: "Product not found" });
-      }
-    })
-    .catch((error) => {
-      res.send(error);
-    });
-});
-// router.post("/", (req, res) => {
-//   Product.create(req.body).then((products) => res.send(products));
-// });
 
 router.post("/", ProductController.addProduct);
 router.delete("/:id", ProductController.deleteProduct);
 router.put("/:id", ProductController.editProduct);
+router.get("/:id", ProductController.getSingleProduct);
+router.post("/", ProductController.createSingleProduct);
+
 
 module.exports = router;

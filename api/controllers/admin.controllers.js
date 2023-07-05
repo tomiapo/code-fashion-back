@@ -3,11 +3,17 @@ const AdminService = require("../services/admin.services");
 class AdminController {
   static async getAll(req, res) {
     try {
-      const users = await AdminService.getAllUsers();
-      if (users.length === 0) {
-        return res.status(404).json({ error: "No users found" });
+      const isSeller = req.user.isSeller;
+      if (isSeller) {
+        const users = await AdminService.getAllUsers();
+        if (users.length === 0) {
+          return res.status(404).json({ error: "No users found" });
+        }
+
+        return res.json(users);
+      } else {
+        return res.status(403).json({ message: "acceso denegado" });
       }
-      return res.json(users);
     } catch (error) {
       res.status(404).json({ error: error.message });
     }
