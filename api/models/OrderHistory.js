@@ -13,6 +13,7 @@ OrderHistory.init(
 
     order_details_by_product: {
       type: DataTypes.ARRAY(DataTypes.STRING),
+
       allowNull: false,
     },
     total_amount: {
