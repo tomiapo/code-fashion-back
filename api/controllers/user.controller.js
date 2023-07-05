@@ -39,7 +39,7 @@ class UserController {
           email: user.email,
           id: user.id,
           address: user.address,
-          isSeller: user.isSeller,
+          isSeller: user.is_seller,
         };
         const token = generateToken(payload);
 
