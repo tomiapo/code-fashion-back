@@ -43,7 +43,7 @@ class SuperAdminController {
       const userId = req.params.userId;
 
       const superAdmin = await User.findOne({
-        where: { isSuperAdmin: true },
+        where: { is_super_admin: true },
       });
 
       if (!superAdmin) {

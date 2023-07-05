@@ -9,11 +9,11 @@ class SuperAdminService {
         throw new Error("User not found");
       }
 
-      if (!user.isSuperAdmin) {
+      if (!user.is_super_admin) {
         throw new Error("Not authorized to perform this action");
       }
 
-      return await User.findAll({
+      const users = await User.findAll({
         attributes: [
           "id",
           "first_name",
@@ -23,6 +23,8 @@ class SuperAdminService {
           "is_super_admin",
         ],
       });
+
+      return users;
     } catch (error) {
       throw error;
     }
@@ -60,14 +62,10 @@ class SuperAdminService {
   static async revokeAdminPrivileges(superAdminId, userId) {
     try {
       const superAdmin = await User.findOne({
-        where: { is_super_admin: true },
+        where: { id: superAdminId, is_super_admin: true },
       });
 
       if (!superAdmin) {
-        throw new Error("SuperAdmin not found");
-      }
-
-      if (superAdmin.id !== superAdminId) {
         throw new Error("Not authorized to perform this action");
       }
 
