@@ -2,8 +2,10 @@ const express = require("express");
 const User = require("../models/User");
 const { generateToken } = require("../config/token");
 const validateUser = require("../middlewares/validateUser");
+const UserController = require("../controllers/user.controllers");
 
 const router = express.Router();
+router.put("/:userId", UserController.editUser);
 
 router.post("/create-user", (req, res) => {
   User.create(req.body).then((user) => res.send(user));
@@ -32,8 +34,11 @@ router.post("/login", async (req, res) => {
         email: user.email,
         id: user.id,
         address: user.address,
+        isSeller: user.isSeller,
       };
+
       const token = generateToken(payload);
+      console.log(token);
       res.cookie("authToken", token);
       res.send({ user: payload, token: token });
     }
