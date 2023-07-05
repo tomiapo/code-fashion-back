@@ -7,7 +7,6 @@ router.get("/", showAllProducts);
 
 router.get("/:id", (req, res) => {
   const productId = req.params.id;
-  console.log(productId);
 
   Product.findByPk(productId)
     .then((product) => {
@@ -17,7 +16,6 @@ router.get("/:id", (req, res) => {
       }
     })
     .catch((error) => {
-      console.log(error);
       res.send(error);
     });
 });
