@@ -1,7 +1,6 @@
 const OrderHistory = require("../models/OrderHistory");
 const sendConfirmationEmail = require("../utils/utils.js");
 require("dotenv").config();
-console.log(process.env);
 class OrderHistoryController {
   static async createNewOrder(req, res) {
     try {
@@ -32,7 +31,6 @@ class OrderHistoryController {
         .status(201)
         .json({ order: newOrder, message: "Order created successfully" });
     } catch (error) {
-      console.log(error);
       res.status(500).json({ error: "Error adding products to order history" });
     }
   }
