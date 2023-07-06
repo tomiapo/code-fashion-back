@@ -3,11 +3,21 @@ class UserService {
   static async updateUser(userId, userData) {
     try {
       const user = await User.findByPk(userId);
-      user.firstname = userData.firstname;
-      user.lastname = userData.lastname;
-      user.username = userData.username;
-      user.address = userData.address;
-      user.email = userData.email;
+      if (userData.first_name) {
+        user.first_name = userData.first_name;
+      }
+      if (userData.last_name) {
+        user.last_name = userData.last_name;
+      }
+      if (userData.username) {
+        user.username = userData.username;
+      }
+      if (userData.address) {
+        user.address = userData.address;
+      }
+      if (userData.email) {
+        user.email = userData.email;
+      }
       await user.save();
       return user;
     } catch (error) {
