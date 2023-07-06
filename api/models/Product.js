@@ -1,7 +1,15 @@
 const Sequelize = require("sequelize");
 const db = require("../config/db");
 
-class Product extends Sequelize.Model {}
+class Product extends Sequelize.Model {
+  static async searchProducts(searchParam) {
+    const foundProducts = await Product.findAll({
+      where: { name: { [Sequelize.Op.iLike]: `%${searchParam}%` } },
+    });
+
+    return foundProducts;
+  }
+}
 Product.init(
   {
     id: {
