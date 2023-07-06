@@ -40,6 +40,7 @@ class UserController {
           id: user.id,
           address: user.address,
           isSeller: user.is_seller,
+          isAdmin: user.is_super_admin,
         };
         const token = generateToken(payload);
 
