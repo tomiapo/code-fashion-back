@@ -39,8 +39,9 @@ class UserController {
           email: user.email,
           id: user.id,
           address: user.address,
-          isSeller: user.is_seller,
-          isAdmin: user.is_super_admin,
+          is_seller: user.is_seller,
+          username: user.username,
+          is_super_admin: user.is_super_admin,
         };
         const token = generateToken(payload);
 

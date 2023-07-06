@@ -91,6 +91,17 @@ class ProductController {
       next(error);
     }
   }
+  static async searchProducts(req, res, next) {
+    try {
+      const { searchParam } = req.params;
+      const foundProducts = await Product.searchProducts(searchParam);
+      return res.send(foundProducts);
+    } catch (error) {
+      return res
+        .status(400)
+        .send({ msg: "Error searching for products" }, error);
+    }
+  }
 }
 
 module.exports = ProductController;
