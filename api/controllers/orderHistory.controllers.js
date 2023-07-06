@@ -39,6 +39,20 @@ class OrderHistoryController {
     const orders = await OrderHistory.findAll();
     res.status(200).send(orders);
   }
+
+  static async getOrders(req, res) {
+    const UserId = req.params.userId;
+    console.log(UserId);
+    try {
+      const orders = await OrderHistory.findAll({ where: { user_id: UserId } });
+      if (!orders.length) {
+        return res.status(404).json({ error: "No orders found" });
+      }
+      res.json(orders);
+    } catch (error) {
+      res.status(404).json({ error: "Error bringing orders" });
+    }
+  }
 }
 
 module.exports = OrderHistoryController;
