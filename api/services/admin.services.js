@@ -5,6 +5,7 @@ class AdminService {
     try {
       return await User.findAll({
         attributes: ["id", "first_name", "last_name", "email"],
+        where: { is_seller: false, is_super_admin: false },
       });
     } catch (error) {
       console.log(error);
