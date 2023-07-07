@@ -3,7 +3,7 @@ const AdminService = require("../services/admin.services");
 class AdminController {
   static async getAll(req, res) {
     try {
-      const isSeller = req.user.isSeller;
+      const isSeller = req.user.is_seller;
       if (isSeller) {
         const users = await AdminService.getAllUsers();
         if (users.length === 0) {
