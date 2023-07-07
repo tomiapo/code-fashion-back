@@ -1,6 +1,7 @@
 const OrderHistory = require("../models/OrderHistory");
 const sendConfirmationEmail = require("../utils/utils.js");
 require("dotenv").config();
+
 class OrderHistoryController {
   static async createNewOrder(req, res) {
     try {
@@ -42,7 +43,7 @@ class OrderHistoryController {
 
   static async getOrders(req, res) {
     const UserId = req.params.userId;
-    console.log(UserId);
+
     try {
       const orders = await OrderHistory.findAll({ where: { user_id: UserId } });
       if (!orders.length) {

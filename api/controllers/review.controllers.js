@@ -14,7 +14,6 @@ class ReviewController {
 
       res.status(201).json(review);
     } catch (error) {
-      console.log(error);
       res.status(404).json({ error: "Error adding review" });
     }
   }

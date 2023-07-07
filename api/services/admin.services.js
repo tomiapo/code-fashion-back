@@ -8,7 +8,7 @@ class AdminService {
         where: { is_seller: false, is_super_admin: false },
       });
     } catch (error) {
-      console.log(error);
+      return { error: true, data: error };
     }
   }
   static async deleteUser(id) {
@@ -20,7 +20,7 @@ class AdminService {
       return user;
     } catch ({ response }) {
       const { error } = response.data;
-      console.error(error);
+
       return { error: true, data: error };
     }
   }
