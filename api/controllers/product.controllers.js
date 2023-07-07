@@ -102,6 +102,23 @@ class ProductController {
         .send({ msg: "Error searching for products" }, error);
     }
   }
+  static async getAllCategories(req, res, next) {
+    try {
+      const categoriesArr = await Product.getAllCategories();
+      return res.send(categoriesArr);
+    } catch (error) {
+      return res.status(400).send({ msg: "Error getting categories", error });
+    }
+  }
+  static async getProductsByCategory(req, res, next) {
+    try {
+      const category = req.params.category;
+      const foundProducts = await Product.getProductsByCategory(category);
+      res.send(foundProducts);
+    } catch (error) {
+      res.status(400).send(error);
+    }
+  }
 }
 
 module.exports = ProductController;
