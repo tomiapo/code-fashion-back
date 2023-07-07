@@ -3,7 +3,7 @@ const express = require("express");
 const router = express.Router();
 const cors = require("cors");
 const app = express();
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT;
 const db = require("./config/db");
 const morgan = require("morgan");
 
@@ -15,7 +15,7 @@ const cookieParser = require("cookie-parser");
 app.use(morgan("tiny"));
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
+app.use(cors({ credentials: true, origin: process.env.URL_CLIENT }));
 app.use("/api", routes);
 app.get("/", (req, res) => {
   res.send("Hello World");
