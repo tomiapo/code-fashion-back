@@ -9,6 +9,34 @@ class Product extends Sequelize.Model {
 
     return foundProducts;
   }
+  static async getAllCategories() {
+    const categoriesObjectArray = await Product.findAll({
+      attributes: [
+        Sequelize.fn("DISTINCT", Sequelize.col("category_name")),
+        "category_name",
+      ],
+    });
+
+    let categoriesArr = [];
+
+    categoriesObjectArray.map((object) => {
+      object.category_name.map((category) => {
+        categoriesArr.includes(category)
+          ? () => {}
+          : categoriesArr.push(category);
+      });
+    });
+
+    return categoriesArr;
+  }
+
+  static async getProductsByCategory(category) {
+    const products = await Product.findAll();
+    const foundProducts = products.filter((product) =>
+      product.category_name.includes(category)
+    );
+    return foundProducts;
+  }
 }
 Product.init(
   {
@@ -37,7 +65,7 @@ Product.init(
       allowNull: false,
     },
     category_name: {
-      type: Sequelize.STRING,
+      type: Sequelize.ARRAY(Sequelize.STRING),
       allowNull: false,
     },
     brand: {
